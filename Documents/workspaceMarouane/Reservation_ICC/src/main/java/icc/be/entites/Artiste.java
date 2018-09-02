@@ -19,7 +19,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @Data
 @ToString
-@EqualsAndHashCode(exclude = {"id"})
 public class Artiste implements Serializable{
 		@Id
 		@GeneratedValue(strategy=GenerationType.IDENTITY)

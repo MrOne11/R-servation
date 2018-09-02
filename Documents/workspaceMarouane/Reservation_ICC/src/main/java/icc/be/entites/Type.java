@@ -24,8 +24,9 @@ public class Type {
 	private Long id;
 		@Column(name="INTITULE", length=50)
 	private String intitule;
+		
 		public Type(String intitule) {
-			super();
+			
 			this.intitule = intitule;
 		}
 		
