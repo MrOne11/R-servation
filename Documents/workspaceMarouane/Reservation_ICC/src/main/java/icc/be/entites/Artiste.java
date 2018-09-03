@@ -2,12 +2,18 @@ package icc.be.entites;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -32,6 +38,11 @@ public class Artiste implements Serializable{
 		@Column(name="MAIL", length=50)
 	private String mail;
 	private String photo;
+	@ManyToMany(cascade = {CascadeType.ALL})
+	@JoinTable(name="ARTISTE_TYPE", 
+				joinColumns={@JoinColumn(name="ARTISTE_ID")}, 
+				inverseJoinColumns={@JoinColumn(name="TYPE_ID")})
+	private Set<Type> typeArtistes = new HashSet<Type>();
 			
 			public Artiste(String nom, String prenom, Date dateNaissance, String mail, String photo) {
 				
