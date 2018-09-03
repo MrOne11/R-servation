@@ -14,10 +14,12 @@ import icc.be.entites.Artiste;
 public interface ArtisteRepository extends JpaRepository<Artiste, Long>{
 
 	public Page<Artiste> findByNom(String nom, Pageable pageable);
+	public Artiste findByNom(String nom);
+	public Artiste findByPrenom(String prenom);
 		@Query("select a from Artiste  a where a.nom like :x")
-	public Page<Artiste> chercherEtudiants(@Param("x") String motcle, Pageable pageable);
+	public Page<Artiste> chercherArtiste(@Param("x") String motcle, Pageable pageable);
 		
 		@Query("select a from Artiste  a where a.dateNaissance > :x and a.dateNaissance < :y")	
-	public List<Artiste> chercherEtudiants(@Param("x") Date d1,@Param("y") Date d2);
+	public List<Artiste> chercherEtudiantParDate(@Param("x") Date d1,@Param("y") Date d2);
 
 }

@@ -37,16 +37,20 @@ public class TypeController {
 	
 	//Formulaire POST
 	// si n'est pas valide renvoit le formulaire GET
+	
 	@RequestMapping(value="/saveType",method=RequestMethod.POST)
 	public String save(@Valid Type typeArtiste,
 			BindingResult bindingResult ,@Valid FormVerificationType verification) throws IllegalStateException, IOException{
 		if(bindingResult.hasErrors())
 			return "type/form";
+		//Verifier si l'intitulé existe deja ou pas 
+
 			Type type = typeRepositoy.findByIntitule((verification.getIntitule()));
 				//ce type existe déja 
+				//renvoit la vue Type existe
 				if(type!=null){
 					System.out.println("_-_-_-_-_-_-*****");
-					return "userExist";
+					return "TypeExist";
 			
 				}
 		System.out.println("*****OO*****");
