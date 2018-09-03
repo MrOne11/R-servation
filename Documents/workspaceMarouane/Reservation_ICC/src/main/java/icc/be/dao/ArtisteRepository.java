@@ -20,6 +20,6 @@ public interface ArtisteRepository extends JpaRepository<Artiste, Long>{
 	public Page<Artiste> chercherArtiste(@Param("x") String motcle, Pageable pageable);
 		
 		@Query("select a from Artiste  a where a.dateNaissance > :x and a.dateNaissance < :y")	
-	public List<Artiste> chercherEtudiantParDate(@Param("x") Date d1,@Param("y") Date d2);
+	public List<Artiste> chercherParDate(@Param("x") Date d1,@Param("y") Date d2);
 
 }
